@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+}
+
+body {
+  color: #444;
+  background-color: $background__color;
+
+  &::before {
+    content: "";
+    background: url(../Assets/bg__todo.svg) no-repeat center / cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.6;
+    z-index: -1;
+  }
+}

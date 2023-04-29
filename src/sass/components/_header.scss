@@ -1,0 +1,50 @@
+.header {
+  margin: 5.2rem auto 0 auto;
+  max-width: 105rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #28282f;
+
+  & h1 {
+    font-size: 4.4rem;
+    margin-bottom: 2.4rem;
+    font-weight: 600;
+  }
+
+  & p {
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  &__btn {
+    font-size: 2.4rem;
+    color: inherit;
+    background-color: $primary__color;
+    padding: 1.5rem 4rem;
+    animation: moveInBottom 2s ease-out;
+    animation-fill-mode: backwards;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  & .reference {
+    line-height: 1;
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+
+    & p {
+      color: #555;
+      font-size: 1.2rem;
+    }
+  }
+}

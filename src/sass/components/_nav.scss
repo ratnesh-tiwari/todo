@@ -1,0 +1,44 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 6rem;
+
+  &__heading {
+    font-size: 3.2rem;
+    letter-spacing: 0.3rem;
+    font-weight: 700;
+
+    & span {
+      color: $primary__color;
+    }
+  }
+
+  & ul {
+    display: flex;
+    list-style: none;
+    gap: 2.4rem;
+    font-weight: 500;
+
+    & li {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btn {
+    font-size: 2rem;
+    background-color: $primary__color;
+    padding: 1rem 3rem;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
