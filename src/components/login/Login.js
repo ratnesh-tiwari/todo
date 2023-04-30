@@ -33,18 +33,22 @@ const Login = props => {
         alert("Your password and confirmon passsword does not match!");
         return;
       }
-      createUserWithEmailAndPassword(auth, email, passsword).catch(err =>
-        alert(err.message)
-      );
+      createUserWithEmailAndPassword(auth, email, passsword)
+        .then(res => {
+          setLoginBtnClicked(false);
+        })
+        .catch(err => alert(err.message));
       setEmailInput("");
       setPasswordInput("");
       setConfirmPasswordInput("");
       return;
     }
 
-    signInWithEmailAndPassword(auth, email, passsword).catch(err =>
-      alert(err.message)
-    );
+    signInWithEmailAndPassword(auth, email, passsword)
+      .then(res => {
+        setLoginBtnClicked(false);
+      })
+      .catch(err => alert(err.message));
     setEmailInput("");
     setPasswordInput("");
     return;
@@ -152,4 +156,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default React.memo(Login);

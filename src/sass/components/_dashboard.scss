@@ -1,11 +1,13 @@
 .dashboard {
   background-color: $background__color;
   height: 100vh;
+  width: 100%;
   opacity: 0.9;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 3.2rem;
   column-gap: 2.4rem;
+  overflow: hidden;
 }
 
 .left,
@@ -19,6 +21,7 @@
 
 .left {
   grid-column: 1 / span 3;
+  position: relative;
 
   & h1 {
     margin-bottom: 3.2rem;
@@ -84,4 +87,25 @@
   width: 1rem;
   border-radius: 1rem;
   display: inline-block;
+}
+
+.sign__out {
+  position: absolute;
+  top: 3.2rem;
+  right: 2.4rem;
+  background-color: $primary__color;
+  padding: 1rem 2rem;
+  letter-spacing: 0.1rem;
+  font-size: 1.6rem;
+  color: inherit;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  }
 }

@@ -1,12 +1,13 @@
 import React from "react";
 import LeftNav from "./left/LeftNav";
 import LeftTag from "./left/LeftTag";
+import TodoLayout from "./middle/TodoLayout";
 
-const Dashboard = () => {
+const Dashboard = props => {
   return (
     <div className="dashboard">
       <div className="left">
-        <LeftNav />
+        <LeftNav setIsAuthenticated={props.setIsAuthenticated} />
         <div className="left__tags">
           <h3 className="heading__tertiery">Tags</h3>
           <div className="left__tags--list">
@@ -14,7 +15,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="middle">Middle</div>
+      <div className="middle">
+        <TodoLayout />
+      </div>
       <div className="right">Right</div>
     </div>
   );

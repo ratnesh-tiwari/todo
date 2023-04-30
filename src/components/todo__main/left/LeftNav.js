@@ -1,11 +1,20 @@
 import React from "react";
+import { auth } from "../../../firebase";
+import { signOut } from "firebase/auth";
 
-const LeftNav = () => {
+const LeftNav = props => {
+  const onSignOut = () => {
+    signOut(auth);
+    props.setIsAuthenticated(false);
+  };
   return (
     <React.Fragment>
       <h1 className="navigation__heading">
         T<span>OD</span>O
       </h1>
+      <button onClick={onSignOut} className="btn sign__out">
+        Sign Out!
+      </button>
       <div className="left__side">
         <button className="btn left__btn">
           <ion-icon name="home-outline"></ion-icon>Home

@@ -28,7 +28,7 @@ const App = () => {
           setLoginBtnClicked={setLoginBtnClicked}
         />
       )}
-      {isAuthenticated && <Dashboard />}
+      {isAuthenticated && <Dashboard setIsAuthenticated={setIsAuthenticated} />}
     </div>
   );
 };

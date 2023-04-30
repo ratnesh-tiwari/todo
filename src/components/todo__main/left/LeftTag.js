@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import TagsContext from "../../../context/tags-context";
 
 const LeftTag = props => {
+  const tagCtx = useContext(TagsContext);
+
   return (
     <React.Fragment>
-      <div className="left__tags--list-item">
-        <p className="left__colors" style={{ backgroundColor: "red" }}></p>
-        <p>Design</p>
-      </div>
-      <div className="left__tags--list-item">
-        <p className="left__colors" style={{ backgroundColor: "red" }}></p>
-        <p>Design</p>
-      </div>
-      <div className="left__tags--list-item">
-        <p className="left__colors" style={{ backgroundColor: "red" }}></p>
-        <p>Design</p>
-      </div>
-      <div className="left__tags--list-item">
-        <p className="left__colors" style={{ backgroundColor: "red" }}></p>
-        <p>Design</p>
-      </div>
+      {tagCtx.tagName.map(item => (
+        <div className="left__tags--list-item">
+          <p
+            className="left__colors"
+            style={{ backgroundColor: item.bgName }}
+            key={tagCtx.key}
+          ></p>
+          <p>{item.tagName}</p>
+        </div>
+      ))}
+      {/* <div className="left__tags--list-item">
+        <p
+          className="left__colors"
+          style={{ backgroundColor: props.bgColor }}
+        ></p>
+        <p>{props.tagName}</p>
+      </div> */}
     </React.Fragment>
   );
 };
