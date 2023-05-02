@@ -9,12 +9,14 @@ const LeftNav = props => {
   };
   return (
     <React.Fragment>
-      <h1 className="navigation__heading">
-        T<span>OD</span>O
-      </h1>
-      <button onClick={onSignOut} className="btn sign__out">
-        Sign Out!
-      </button>
+      <div className="container">
+        <h1 className="navigation__heading">
+          T<span>OD</span>O
+        </h1>
+        <button onClick={onSignOut} className="btn sign__out">
+          Sign Out!
+        </button>
+      </div>
       <div className="left__side">
         <button className="btn left__btn">
           <ion-icon name="home-outline"></ion-icon>Home
@@ -30,7 +32,7 @@ const LeftNav = props => {
         <button className="btn left__btn">
           <ion-icon name="checkmark-done-outline"></ion-icon>
           Goals
-        </button>{" "}
+        </button>
       </div>
     </React.Fragment>
   );

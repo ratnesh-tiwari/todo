@@ -7,7 +7,7 @@ const defaultTagState = {
 
 const tagReducer = (state, action) => {
   if (action.type === "ADD_TAG") {
-    const updatedTag = state.tagName.concat(action.tag);
+    const updatedTag = [...action.tag];
     console.log(updatedTag);
     return {
       tagName: updatedTag

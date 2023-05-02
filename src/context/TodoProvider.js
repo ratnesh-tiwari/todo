@@ -8,8 +8,9 @@ const defaultTodoState = {
 
 const todoReducer = (state, action) => {
   if (action.type === "ADD_TODO") {
-    const updateTodo = state.todo.concat(action.todo);
-    const updateTotalTodo = state.todo++;
+    const updateTodo = [...action.todo];
+    const updateTotalTodo = updateTodo.length;
+    console.log(updateTodo, updateTotalTodo);
     return {
       todo: updateTodo,
       totalTodo: updateTotalTodo

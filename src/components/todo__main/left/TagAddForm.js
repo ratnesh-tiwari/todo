@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import TagsContext from "../../../context/tags-context";
+import { uid } from "uid";
+import { set, ref, onValue } from "firebase/database";
+import { auth, db } from "../../../firebase.js";
 
 const TagAddForm = props => {
   const tagCtx = useContext(TagsContext);
@@ -19,12 +22,30 @@ const TagAddForm = props => {
     setBgName(e.target.value);
   };
 
+  const writeToDatabase = () => {
+    const uidd = uid();
+    set(ref(db, `${auth.currentUser.uid}/tag/${uidd}`), {
+      tag: tagName,
+      bgColor: bgName,
+      uid: uidd
+    });
+  };
+
+  const fetchData = () => {
+    onValue(ref(db, `${auth.currentUser.uid}/tag`), snapshot => {
+      const data = snapshot.val();
+      if (data !== null) {
+        const output = Object.values(data);
+        tagCtx.addTag(output);
+      }
+    });
+  };
+
   const onTagAddHandler = e => {
     e.preventDefault();
+    writeToDatabase();
+    fetchData();
     setTagFormShow(false);
-    tagCtx.addTag({ tagName, bgName, key: Math.random() * 100 + 1 });
-    console.log({ tagCtx, tagName, bgName });
-    console.log(tagCtx.tagName);
   };
 
   return (
@@ -72,4 +93,4 @@ const TagAddForm = props => {
   );
 };
 
-export default React.memo(TagAddForm);
+export default TagAddForm;

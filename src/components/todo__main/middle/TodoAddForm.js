@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import TodoContext from "../../../context/todo-context";
+import { db, auth } from "../../../firebase";
+import { ref, set, onValue } from "firebase/database";
+import { uid } from "uid";
 
 const TodoAddForm = props => {
   const todoCtx = useContext(TodoContext);
@@ -21,10 +24,29 @@ const TodoAddForm = props => {
     }
   };
 
+  const writeToDatabase = () => {
+    const uidd = uid();
+    set(ref(db, `${auth.currentUser.uid}/todo/${uidd}`), {
+      todo: todoName,
+      uid: uidd
+    });
+  };
+
+  const fetchData = () => {
+    onValue(ref(db, `${auth.currentUser.uid}/todo`), snapshot => {
+      const data = snapshot.val();
+      if (data !== null) {
+        const output = Object.values(data);
+        todoCtx.addTodo(output);
+      }
+    });
+  };
+
   const onTodoAddHandler = e => {
     e.preventDefault();
+    writeToDatabase();
+    fetchData();
     setTodoFormShow(false);
-    todoCtx.addTodo(todoName);
   };
 
   return (

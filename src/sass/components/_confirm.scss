@@ -1,0 +1,28 @@
+.confirmation {
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32rem;
+  height: 24rem;
+  z-index: 20;
+  box-shadow: 0 0 3.2rem rgba($color: #000000, $alpha: 0.3);
+  padding: 4.8rem 3.2rem;
+  border-radius: 0.3rem;
+
+  & p {
+    font-size: 2rem;
+  }
+}
+
+.confirm__btn {
+  background-color: $primary__color;
+  margin-top: 3.2rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+
+  &:not(:last-child) {
+    margin-right: 2.4rem;
+  }
+}
