@@ -8,6 +8,8 @@ import { ref, onValue } from "firebase/database";
 import TagsContext from "../../context/tags-context";
 import TodoContext from "../../context/todo-context";
 import { useCallback } from "react";
+import CalendarComp from "./right/calender/Calender";
+import PieChart from "./right/graph/Pie";
 
 const Dashboard = props => {
   const tagCtx = useContext(TagsContext);
@@ -65,7 +67,16 @@ const Dashboard = props => {
         <div className="middle">
           <TodoLayout />
         </div>
-        <div className="right">Right</div>
+        <div className="right">
+          <div className="calender">
+            <h2>Calendar</h2>
+            <CalendarComp />
+          </div>
+          <div className="pie">
+            <h2>Pie Chart</h2>
+            <PieChart />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );

@@ -13,7 +13,11 @@ const LeftTag = props => {
   return (
     <React.Fragment>
       {tagCtx.tagName.map(item => (
-        <div className="left__tags--list-item" key={tagCtx.uid}>
+        <div
+          style={{ marginTop: "1.8rem" }}
+          className="left__tags--list-item"
+          key={tagCtx.uid}
+        >
           <p
             className="left__colors"
             style={{ backgroundColor: item.bgColor }}

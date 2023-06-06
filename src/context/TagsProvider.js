@@ -8,7 +8,7 @@ const defaultTagState = {
 const tagReducer = (state, action) => {
   if (action.type === "ADD_TAG") {
     const updatedTag = [...action.tag];
-    console.log(updatedTag);
+    // console.log(updatedTag);
     return {
       tagName: updatedTag
     };
@@ -23,7 +23,7 @@ const TagsProvider = props => {
   );
 
   const addTagsHandler = tag => {
-    console.log("addtag fn");
+    // console.log("addtag fn");
     dispatchTagAction({ type: "ADD_TAG", tag: tag });
   };
 

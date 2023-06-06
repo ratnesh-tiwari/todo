@@ -24,6 +24,10 @@ const TagAddForm = props => {
 
   const writeToDatabase = () => {
     const uidd = uid();
+    if (tagName.trim().length <= 2 && bgName.trim().length <= 2) {
+      alert("Kindly enter valid value");
+      return;
+    }
     set(ref(db, `${auth.currentUser.uid}/tag/${uidd}`), {
       tag: tagName,
       bgColor: bgName,

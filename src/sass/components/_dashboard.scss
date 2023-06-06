@@ -78,8 +78,15 @@
 
 .left__tags--list-item {
   display: flex;
-  gap: 1.2rem;
+  grid-template-columns: min-content 1fr min-content;
+  column-gap: 1.6rem;
   align-items: center;
+  justify-content: space-between;
+
+  & ion-icon {
+    font-size: 1.6rem;
+    margin-right: 1.6rem;
+  }
 
   & p {
     font-size: 1.6rem;
@@ -142,4 +149,10 @@
   & .navigation__heading {
     margin-bottom: 0;
   }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 }

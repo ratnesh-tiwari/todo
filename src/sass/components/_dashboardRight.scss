@@ -1,0 +1,27 @@
+.calender,
+.pie {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  flex-grow: 1;
+
+  & h2 {
+    font-size: 2.4rem;
+  }
+}
+
+.pie {
+  max-height: max-content;
+}
+
+.react-calendar {
+  background-color: $background__color !important;
+}
+
+.react-calendar__month-view__weekdays {
+  color: gray;
+}
+
+.react-calendar__navigation button {
+  font-size: 1em;
+}

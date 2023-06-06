@@ -3,32 +3,38 @@ import TodoContext from "../../../context/todo-context";
 import { db, auth } from "../../../firebase";
 import { ref, set, onValue } from "firebase/database";
 import { uid } from "uid";
+import TagsContext from "../../../context/tags-context";
 
 const TodoAddForm = props => {
   const todoCtx = useContext(TodoContext);
+  const { tagName } = useContext(TagsContext);
   const [todoName, setTodoName] = useState("");
-  const [todoNameIsValid, setTodoNameIsValid] = useState(true);
+  const [tagNameCh, setTagNameCh] = useState("");
   const { setTodoFormShow } = props;
 
   const todoInShowHandler = () => {
     setTodoFormShow(false);
   };
 
+  const onTagNameChangeHandler = e => {
+    setTagNameCh(e.target.value);
+  };
+
   const onTodoNameChangeHandler = e => {
     setTodoName(e.target.value);
-    if (todoName.trim().length < 2) {
-      setTodoNameIsValid(false);
-      return;
-    } else {
-      setTodoNameIsValid(true);
-    }
   };
 
   const writeToDatabase = () => {
     const uidd = uid();
+    if (tagNameCh.trim().length === 0) {
+      alert("Tag can't be empty");
+      return;
+    }
     set(ref(db, `${auth.currentUser.uid}/todo/${uidd}`), {
       todo: todoName,
-      uid: uidd
+      uid: uidd,
+      tagUid: tagNameCh,
+      isChecked: false
     });
   };
 
@@ -44,6 +50,11 @@ const TodoAddForm = props => {
 
   const onTodoAddHandler = e => {
     e.preventDefault();
+    if (todoName.trim().length <= 2) {
+      alert("Todo Name cant be empty");
+      setTodoFormShow(false);
+      return;
+    }
     writeToDatabase();
     fetchData();
     setTodoFormShow(false);
@@ -70,17 +81,22 @@ const TodoAddForm = props => {
               Enter tag name
             </label>
           </div>
+          <div className="form__group">
+            <select
+              className="form__input"
+              value={tagNameCh}
+              onChange={onTagNameChangeHandler}
+            >
+              <option>Select an Tag</option>
+              {tagName.map(item => (
+                <option value={item.uid}>{item.tag}</option>
+              ))}
+            </select>
+          </div>
           <div className="form__group center">
-            {!todoNameIsValid && (
-              <p style={{ color: "orangered", fontSize: "1.8rem" }}>
-                Entered name must be above 2 charcter.
-              </p>
-            )}
-            {todoNameIsValid && (
-              <button onClick={onTodoAddHandler} className="btn form__btn">
-                Add Tag
-              </button>
-            )}
+            <button onClick={onTodoAddHandler} className="btn form__btn">
+              Add Task
+            </button>
           </div>
         </div>
       </form>

@@ -10,7 +10,6 @@ const todoReducer = (state, action) => {
   if (action.type === "ADD_TODO") {
     const updateTodo = [...action.todo];
     const updateTotalTodo = updateTodo.length;
-    console.log(updateTodo, updateTotalTodo);
     return {
       todo: updateTodo,
       totalTodo: updateTotalTodo

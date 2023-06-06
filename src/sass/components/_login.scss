@@ -76,6 +76,7 @@
     letter-spacing: 0.5px;
     animation: moveInBottom 1s ease-out;
     animation-fill-mode: backwards;
+    margin-top: 2rem;
 
     &:hover {
       transform: translateY(-3px);
